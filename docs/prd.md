@@ -4,8 +4,10 @@
 
 - [x] Present welcome message
 
+- [ ] Navigation
+
 - [x] Help command  
-  Show available options (tasks, edit, create, delete)
+  Show available options (list, view, edit, create, delete, help)
 
 - [ ] List command  
   Display all tasks (id, title)
