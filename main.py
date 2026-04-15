@@ -1,4 +1,4 @@
-count = 0
+count = 3
 
 tasks = [
     {
@@ -32,7 +32,7 @@ def welcome():
 def help_command():
     print("//////HELP//////")
     print("Options:")
-    print("Tasks, Create, Update, Delete")
+    print("list, view, create, update, delete")
 
 
 def list_command():
