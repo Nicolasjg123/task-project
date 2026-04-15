@@ -4,7 +4,7 @@
 
 - [x] Present welcome message
 
-- [ ] Help command  
+- [x] Help command  
   Show available options (tasks, edit, create, delete)
 
 - [ ] List command  
