@@ -2,7 +2,7 @@
 
 ## Features
 
-- [ ] Present welcome message
+- [x] Present welcome message
 
 - [ ] Help command  
   Show available options (tasks, edit, create, delete)
