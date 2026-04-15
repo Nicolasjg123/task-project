@@ -24,7 +24,8 @@ tasks = [
     },
 ]
 
-print("///////Welcome////////")
+def welcome():
+    print("///////Welcome////////")
 
 
 
@@ -38,4 +39,4 @@ def list_command():
     for task in tasks:
         print(f'{task["id"]}: {task["name"]}')
 
-list_command()
+welcome()
