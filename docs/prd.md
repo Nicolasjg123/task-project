@@ -9,7 +9,7 @@
 - [x] Help command  
   Show available options (list, view, edit, create, delete, help)
 
-- [ ] List command  
+- [x] List command  
   Display all tasks (id, title)
 
 - [ ] View command  
