@@ -1,5 +1,4 @@
 count = 3
-
 tasks = [
     {
         "id":1,
@@ -39,4 +38,6 @@ def list_command():
     for task in tasks:
         print(f'{task["id"]}: {task["name"]}')
 
+def navigation():
+    print(input("Choose an option: "))
 welcome()
