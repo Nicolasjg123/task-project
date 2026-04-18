@@ -43,6 +43,3 @@ def navigation():
 options = navigation()
     
 welcome()
-
-if options == "1":
-    print("Yeyyy")

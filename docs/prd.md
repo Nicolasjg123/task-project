@@ -4,7 +4,7 @@
 
 - [x] Present welcome message
 
-- [ ] Navigation
+- [x] Navigation
 
 - [x] Help command  
   Show available options (list, view, edit, create, delete, help)
