@@ -39,5 +39,10 @@ def list_command():
         print(f'{task["id"]}: {task["name"]}')
 
 def navigation():
-    print(input("Choose an option: "))
+    return input("Choose an option: ")
+options = navigation()
+    
 welcome()
+
+if options == "1":
+    print("Yeyyy")
