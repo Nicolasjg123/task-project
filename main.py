@@ -1,25 +1,25 @@
 count = 3
 tasks = [
     {
-        "id":1,
+        1: {"id":1,
         "name":"gym",
         "description":"Ir al gym",
         "date":"2026-04-17",
-        "assignee":"Mike"
+        "assignee":"Mike"}
     }, 
     {
-        "id":2,
+        2: {"id":2,
         "name":"work",
         "description":"programming",
         "date":"2026-04-17",
-        "assignee":"Nico"
+        "assignee":"Nico"}
     },
     {
-        "id":3,
+        3: {"id":3,
         "name":"Play",
         "description":"Play Mario",
         "date":"2026-04-17",
-        "assignee":"Jake"
+        "assignee":"Jake"}
     },
 ]
 
@@ -39,7 +39,12 @@ def list_command():
         print(f'{task["id"]}: {task["name"]}')
 
 def navigation():
-    return input("Choose an option: ")
-options = navigation()
+    options = input("Choose an option: ")
+    return options
     
-welcome()
+def view_command():
+    task =input("Choose a task: ")
+    return task
+    
+navigation()
+view_command()
