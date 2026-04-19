@@ -12,7 +12,7 @@
 - [x] List command  
   Display all tasks (id, title)
 
-- [ ] View command  
+- [x] View command  
   Receive task ID and return:
   - id  
   - name  

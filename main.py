@@ -1,26 +1,26 @@
 count = 3
 tasks = [
     {
-        1: {"id":1,
+        "id":1,
         "name":"gym",
         "description":"Ir al gym",
         "date":"2026-04-17",
         "assignee":"Mike"}
-    }, 
+    , 
     {
-        2: {"id":2,
+        "id":2,
         "name":"work",
         "description":"programming",
         "date":"2026-04-17",
         "assignee":"Nico"}
-    },
+    ,
     {
-        3: {"id":3,
+        "id":3,
         "name":"Play",
         "description":"Play Mario",
         "date":"2026-04-17",
         "assignee":"Jake"}
-    },
+    ,
 ]
 
 def welcome():
@@ -43,8 +43,9 @@ def navigation():
     return options
     
 def view_command():
-    task =input("Choose a task: ")
-    return task
+    view_task =int(input("Choose a task: "))
+    for x in tasks:
+        if x["id"] == view_task:
+            print(f'Nombre: {x["name"]}\nDescription: {x["description"]}\nDate: {x["date"]}\nAssignee: {x["assignee"]}')
     
-navigation()
 view_command()
