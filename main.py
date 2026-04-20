@@ -48,4 +48,9 @@ def view_command():
         if x["id"] == view_task:
             print(f'Nombre: {x["name"]}\nDescription: {x["description"]}\nDate: {x["date"]}\nAssignee: {x["assignee"]}')
     
-view_command()
+def create_commnad():
+    create = {"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assigee": input("Assignee: ")}
+    return create
+# When I create a task how i put a different id everytime I create a new one?
+y = create_commnad()
+print(y)
