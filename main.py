@@ -1,56 +1,60 @@
-count = 3
-tasks = [
-    {
-        "id":1,
-        "name":"gym",
-        "description":"Ir al gym",
-        "date":"2026-04-17",
-        "assignee":"Mike"}
-    , 
-    {
-        "id":2,
-        "name":"work",
-        "description":"programming",
-        "date":"2026-04-17",
-        "assignee":"Nico"}
-    ,
-    {
-        "id":3,
-        "name":"Play",
-        "description":"Play Mario",
-        "date":"2026-04-17",
-        "assignee":"Jake"}
-    ,
-]
+count = 0
 
-def welcome():
-    print("///////Welcome////////")
+while True:
+    count +=1        
+    tasks = [
+        {
+            "id":1,
+            "name":"gym",
+            "description":"Ir al gym",
+            "date":"2026-04-17",
+            "assignee":"Mike"}
+        , 
+        {
+            "id":2,
+            "name":"work",
+            "description":"programming",
+            "date":"2026-04-17",
+            "assignee":"Nico"}
+        ,
+        {
+            "id":3,
+            "name":"Play",
+            "description":"Play Mario",
+            "date":"2026-04-17",
+            "assignee":"Jake"}
+        ,
+    ]
 
-
-
-def help_command():
-    print("//////HELP//////")
-    print("Options:")
-    print("list, view, create, update, delete")
+    def welcome():
+        print("///////Welcome////////")
 
 
-def list_command():
-    for task in tasks:
-        print(f'{task["id"]}: {task["name"]}')
 
-def navigation():
-    options = input("Choose an option: ")
-    return options
+    def help_command():
+        print("//////HELP//////")
+        print("Options:")
+        print("list, view, create, update, delete")
+
+
+    def list_command():
+        for task in tasks:
+            print(f'{task["id"]}: {task["name"]}')
+
+    def navigation():
+        options = input("Choose an option: ")
+        return options
+        
+    def view_command():
+        view_task =int(input("Choose a task: "))
+        for x in tasks:
+            if x["id"] == view_task:
+                print(f'Nombre: {x["name"]}\nDescription: {x["description"]}\nDate: {x["date"]}\nAssignee: {x["assignee"]}')
+        
+    def create_commnad():
+        create = {"id" : count,"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assigee": input("Assignee: ")}
+        return create
+    # When I create a task how i put a different id everytime I create a new one?
+    y = create_commnad()
+    print(y)
     
-def view_command():
-    view_task =int(input("Choose a task: "))
-    for x in tasks:
-        if x["id"] == view_task:
-            print(f'Nombre: {x["name"]}\nDescription: {x["description"]}\nDate: {x["date"]}\nAssignee: {x["assignee"]}')
-    
-def create_commnad():
-    create = {"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assigee": input("Assignee: ")}
-    return create
-# When I create a task how i put a different id everytime I create a new one?
-y = create_commnad()
-print(y)
