@@ -21,7 +21,7 @@
   - duration  
   - assignee  
 
-- [ ] Create command  
+- [x] Create command  
   Show input fields for:
   - name  
   - description  
