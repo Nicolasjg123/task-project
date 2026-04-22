@@ -1,30 +1,9 @@
-count = 0
+count = 1
+tasks = []
 
 while True:
-    count +=1        
-    tasks = [
-        {
-            "id":1,
-            "name":"gym",
-            "description":"Ir al gym",
-            "date":"2026-04-17",
-            "assignee":"Mike"}
-        , 
-        {
-            "id":2,
-            "name":"work",
-            "description":"programming",
-            "date":"2026-04-17",
-            "assignee":"Nico"}
-        ,
-        {
-            "id":3,
-            "name":"Play",
-            "description":"Play Mario",
-            "date":"2026-04-17",
-            "assignee":"Jake"}
-        ,
-    ]
+       
+
 
     def welcome():
         print("///////Welcome////////")
@@ -42,7 +21,21 @@ while True:
             print(f'{task["id"]}: {task["name"]}')
 
     def navigation():
+        global count
         options = input("Choose an option: ")
+        if options == "list":
+            list_command()
+        if options == "view":
+            view_command()
+        if options == "create":
+            x = create_commnad()
+            tasks.append(x)
+            count += 1
+        if options == "update":
+            print("////IN PROGRES////")
+        if options == "delete":
+            print("////IN PROGRES////")
+        else: help_command()
         return options
         
     def view_command():
@@ -52,9 +45,6 @@ while True:
                 print(f'Nombre: {task["name"]}\nDescription: {task["description"]}\nDate: {task["date"]}\nAssignee: {task["assignee"]}')
         
     def create_commnad():
-        create = {"id" : count,"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assigee": input("Assignee: ")}
+        create = {"id" : count,"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assignee": input("Assignee: ")}
         return create
    
-    y = create_commnad()
-    print(y)
-    
