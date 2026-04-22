@@ -47,14 +47,14 @@ while True:
         
     def view_command():
         view_task =int(input("Choose a task: "))
-        for x in tasks:
-            if x["id"] == view_task:
-                print(f'Nombre: {x["name"]}\nDescription: {x["description"]}\nDate: {x["date"]}\nAssignee: {x["assignee"]}')
+        for task in tasks:
+            if task["id"] == view_task:
+                print(f'Nombre: {task["name"]}\nDescription: {task["description"]}\nDate: {task["date"]}\nAssignee: {task["assignee"]}')
         
     def create_commnad():
         create = {"id" : count,"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assigee": input("Assignee: ")}
         return create
-    # When I create a task how i put a different id everytime I create a new one?
+   
     y = create_commnad()
     print(y)
     
