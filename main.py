@@ -6,8 +6,6 @@ def welcome():
     print("///////Welcome////////")
     print("----------------------")
 
-
-
 def help_command():
     print("//////HELP//////")
     print("> Options:")
@@ -32,11 +30,11 @@ def navigation():
         tasks.append(x)
         count += 1
     if options.lower() == "update":
-        update_command()                  #como anado la actualizacion de la tarea si la variable es una lista y dentro esta el diccionario
+        update_command()                 
     if options.lower() == "delete":
         print("////IN PROGRES////")
     else: help_command()
-    return options
+    
         
 def view_command():
     view_task = int(input("> Choose a task: "))
@@ -56,27 +54,34 @@ def update_command():
     update_task = int(input("> Choose a task: "))
     for task in tasks:
         if task["id"] == update_task:
+            print("> Task",task["id"])
             print(f'- Nombre: {task["name"]}\n- Description: {task["description"]}\n- Date: {task["date"]}\n- Assignee: {task["assignee"]}')
-            print("What do you want to update? ")
-            print("Name, Description, Date, Assignee")
-            options = input("> ")
+            print("----------------------")
+            print("> What do you want to update? ")
+            print("(name, description, date, assignee)")
+            print("----------------------")
+            options = input("> Choose an option: ")
+            print("----------------------")
             if options.lower() == "name":
                 update = input("New name: ")
+                print("----------------------")
                 task["name"] = update
             if options.lower() == "description":
                 update = input("New description: ")
+                print("----------------------")
                 task["description"] = update
             if options.lower() == "date":
                 update = input("New date: ")
+                print("----------------------")
                 task["date"] = update
             if options.lower() == "assignee":
                 update = input("New assignee: ")
+                print("----------------------")
                 task["assignee"] = update
             
             else: help_command()
 
-        
+welcome()       
 while True:
-    welcome()
     navigation()
     
