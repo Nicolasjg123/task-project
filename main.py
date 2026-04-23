@@ -10,49 +10,73 @@ def welcome():
 
 def help_command():
     print("//////HELP//////")
-    print("Options:")
-    print("list, view, create, update, delete")
+    print("> Options:")
+    print("(list, view, create, update, delete)")
     print("----------------------")
 
 def list_command():
     for task in tasks:
-        print(f'{task["id"]}: {task["name"]}')
+        print(f'> {task["id"]}: {task["name"]}')
         print("----------------------")
 
 def navigation():
     global count
-    options = input("Choose an option: ")
+    options = input("> Choose an option: ")
     print("----------------------")
-    if options == "list":
+    if options.lower() == "list":
         list_command()
-    if options == "view":
+    if options.lower() == "view":
         view_command()
-    if options == "create":
+    if options.lower() == "create":
         x = create_commnad()
         tasks.append(x)
         count += 1
-    if options == "update":
-        print("////IN PROGRES////")
-    if options == "delete":
+    if options.lower() == "update":
+        update_command()                  #como anado la actualizacion de la tarea si la variable es una lista y dentro esta el diccionario
+    if options.lower() == "delete":
         print("////IN PROGRES////")
     else: help_command()
     return options
         
 def view_command():
-    view_task =int(input("Choose a task: "))
+    view_task = int(input("> Choose a task: "))
     print("----------------------")
     for task in tasks:
         if task["id"] == view_task:
-            print("Task",task["id"])
-            print(f'Nombre: {task["name"]}\nDescription: {task["description"]}\nDate: {task["date"]}\nAssignee: {task["assignee"]}')
+            print("> Task",task["id"])
+            print(f'- Nombre: {task["name"]}\n- Description: {task["description"]}\n- Date: {task["date"]}\n- Assignee: {task["assignee"]}')
             print("----------------------")
         
 def create_commnad():
-    create = {"id" : count,"name" : input("Name of the task: "), "description": input("description: "), "date" :input("Date: "), "assignee": input("Assignee: ")}
+    create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
     print("----------------------")
     return create
-   
+
+def update_command():
+    update_task = int(input("> Choose a task: "))
+    for task in tasks:
+        if task["id"] == update_task:
+            print(f'- Nombre: {task["name"]}\n- Description: {task["description"]}\n- Date: {task["date"]}\n- Assignee: {task["assignee"]}')
+            print("What do you want to update? ")
+            print("Name, Description, Date, Assignee")
+            options = input("> ")
+            if options.lower() == "name":
+                update = input("New name: ")
+                task["name"] = update
+            if options.lower() == "description":
+                update = input("New description: ")
+                task["description"] = update
+            if options.lower() == "date":
+                update = input("New date: ")
+                task["date"] = update
+            if options.lower() == "assignee":
+                update = input("New assignee: ")
+                task["assignee"] = update
+            
+            else: help_command()
+
+        
 while True:
     welcome()
     navigation()
-
+    

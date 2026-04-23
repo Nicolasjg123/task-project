@@ -29,7 +29,7 @@
   - duration  
   - assignee  
 
-- [ ] Update command  
+- [x] Update command  
   Allow updating a task by:
   - Showing current task data  
   - Providing input fields alongside existing values  
