@@ -32,7 +32,8 @@ def navigation():
     if options.lower() == "update":
         update_command()                 
     if options.lower() == "delete":
-        print("////IN PROGRES////")
+        delete_command()
+        
     else: help_command()
     
         
@@ -80,6 +81,15 @@ def update_command():
                 task["assignee"] = update
             
             else: help_command()
+
+
+def delete_command():
+    delete_task = int(input("> Choose a task: "))
+    for task in tasks:
+        if task["id"] == delete_task:
+            tasks.remove(task)
+                       
+            
 
 welcome()       
 while True:

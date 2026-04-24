@@ -34,7 +34,7 @@
   - Showing current task data  
   - Providing input fields alongside existing values  
 
-- [ ] Delete command  
+- [x] Delete command  
   Allow deleting a task by:
   - Showing list of tasks with IDs  
   - Letting user choose a task  
