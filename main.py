@@ -27,8 +27,14 @@ def navigation():
         view_command()
     if options.lower() == "create":
         x = create_commnad()
-        tasks.append(x)
-        count += 1    # This is the error 
+        save = input("> Do you want to save the task?: ")
+        if save.lower() == "yes":
+            print("> Task saved susesfully")
+            tasks.append(x)
+            count += 1
+        if options.lower() == "no":
+            navigation()
+        else: print("Help in progress")    # This is the error 
     if options.lower() == "update":
         update_command()                 
     if options.lower() == "delete":
@@ -49,13 +55,7 @@ def view_command():
 def create_commnad():
     create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
     print("----------------------")
-    options = input("> Do you want to save the task?: ") # This is giving an error,
-    if options.lower() == "yes":
-        print("> Task saved susesfully")
-        return create
-    if options.lower() == "no":
-        navigation()
-    else: print("Help in progress")
+    return create
 
 def update_command():
     update_task = int(input("> Choose a task: "))
