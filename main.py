@@ -20,17 +20,8 @@ def navigation():
     if options.lower() == "view":
         view_command()
     if options.lower() == "create":
-        x = create_commnad()
-        save = input("> Do you want to save the task?: ") # <- This go to create commnad
-        print("----------------------")
-        if save.lower() == "yes":
-            print("> Task saved")
-            print("----------------------")
-            tasks.append(x)
-            count += 1
-        if save.lower() == "no":
-            navigation()
-        else: print("Help in progress")
+        create_commnad()
+        
     if options.lower() == "update":
         update_command()
     if options.lower() == "delete":
@@ -54,9 +45,19 @@ def view_command():
             print("----------------------")
 
 def create_commnad():
+    global count
     create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
     print("----------------------") #Translate the confirmacion here
-    return create
+    save = input("> Do you want to save the task?: ") # <- This go to create commnad
+    print("----------------------")
+    if save.lower() == "yes":
+        print("> Task saved")
+        print("----------------------")
+        tasks.append(create)
+        count += 1
+    if save.lower() == "no":
+            navigation()
+    
 
 def update_command():
     for task in tasks:

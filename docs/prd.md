@@ -42,4 +42,4 @@
   - Asking for confirmation  
 
 - [ ] Persistence  
-  The app should persist tasks
+  The app should persist tasks  
