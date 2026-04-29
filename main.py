@@ -1,5 +1,23 @@
-count = 1
-tasks = []
+import json
+
+def load_tasks():
+    with open("tasks.json") as f:
+        return json.loads(f.read())
+
+def load_count():
+    with open("admin.json") as f:
+        return json.loads(f.read())["count"]
+
+tasks = load_tasks()
+count = load_count()
+
+
+
+def save():
+    with open("tasks.json", "w") as f:
+        f.write(json.dumps(tasks))
+    with open("admin.json", "w") as f:
+        f.write(json.dumps({"count": count}))
 
 def welcome():
     print("///////Welcome////////")
@@ -48,14 +66,15 @@ def create_commnad():
     global count
     create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
     print("----------------------") 
-    save = input("> Do you want to save the task?: ") 
+    confirm = input("> Do you want to save the task?: ") 
     print("----------------------")
-    if save.lower() == "yes":
+    if confirm.lower() == "yes":
         print("> Task saved")
         print("----------------------")
         tasks.append(create)
         count += 1
-    if save.lower() == "no":
+        save()
+    if confirm.lower() == "no":
             navigation()
     
 
@@ -76,34 +95,38 @@ def update_command():
             if options.lower() == "name":
                 update = input("> New name: ")
                 print("----------------------")
-                save = input ("> Are you sure?: ")
-                if save.lower() == "yes":
+                confirm = input ("> Are you sure?: ")
+                if confirm.lower() == "yes":
                     task["name"] = update
-                if save.lower() == "no":
+                    save()
+                if confirm.lower() == "no":
                     navigation()
             if options.lower() == "description":
                 update = input("> New description: ")
                 print("----------------------")
-                save = input (">Are you sure?: ")
-                if save.lower() == "yes":
+                confirm = input (">Are you sure?: ")
+                if confirm.lower() == "yes":
                     task["description"] = update
-                if save.lower() == "no":
+                    save()
+                if confirm.lower() == "no":
                     navigation()
             if options.lower() == "date":
                 update = input("> New date: ")
                 print("----------------------")
-                save = input (">Are you sure?: ")
-                if save.lower() == "yes":
+                confirm = input (">Are you sure?: ")
+                if confirm.lower() == "yes":
                     task["date"] = update
-                if save.lower() == "no":
+                    save()
+                if confirm.lower() == "no":
                     navigation()
             if options.lower() == "assignee":
                 update = input("> New assignee: ")
                 print("----------------------")
-                save = input ("> Are you sure?: ")
-                if save.lower() == "yes":
+                confirm = input ("> Are you sure?: ")
+                if confirm.lower() == "yes":
                     task["assignee"] = update
-                if save.lower() == "no":
+                    save()
+                if confirm.lower() == "no":
                     navigation()
             else: help_command()
 
@@ -114,10 +137,11 @@ def delete_command():
     print("----------------------")
     for task in tasks:
         if task["id"] == delete_task:
-            save = input("Are you sure you want to delete the task?: ")
-            if save.lower() == "yes":
+            confirm = input("Are you sure you want to delete the task?: ")
+            if confirm.lower() == "yes":
                 tasks.remove(task)
-            if save.lower() == "no":
+                save()
+            if confirm.lower() == "no":
                 navigation()
 
 welcome()
