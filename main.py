@@ -47,8 +47,8 @@ def view_command():
 def create_commnad():
     global count
     create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
-    print("----------------------") #Translate the confirmacion here
-    save = input("> Do you want to save the task?: ") # <- This go to create commnad
+    print("----------------------") 
+    save = input("> Do you want to save the task?: ") 
     print("----------------------")
     if save.lower() == "yes":
         print("> Task saved")
@@ -60,8 +60,8 @@ def create_commnad():
     
 
 def update_command():
+    list_command()
     for task in tasks:
-        print(f'> {task["id"]}: {task["name"]}')
         update_task = int(input("> Choose a task: "))
         if task["id"] == update_task:
             print("> Task",task["id"])
@@ -109,11 +109,10 @@ def update_command():
 
 
 def delete_command():
+    list_command()
+    delete_task = int(input("> Choose a task: "))
+    print("----------------------")
     for task in tasks:
-        print(f'> {task["id"]}: {task["name"]}')
-        print("----------------------")
-        delete_task = int(input("> Choose a task: "))
-        print("----------------------")
         if task["id"] == delete_task:
             save = input("Are you sure you want to delete the task?: ")
             if save.lower() == "yes":
