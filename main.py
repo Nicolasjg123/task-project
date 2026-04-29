@@ -1,7 +1,6 @@
 count = 1
 tasks = []
 
-
 def welcome():
     print("///////Welcome////////")
     print("----------------------")
@@ -9,13 +8,8 @@ def welcome():
 def help_command():
     print("//////HELP//////")
     print("> Options:")
-    print("(list, view, create, update, delete)")
+    print("(list, view, create, update, delete, exit)")
     print("----------------------")
-
-def list_command():
-    for task in tasks:
-        print(f'> {task["id"]}: {task["name"]}')
-        print("----------------------")
 
 def navigation():
     global count
@@ -27,22 +21,29 @@ def navigation():
         view_command()
     if options.lower() == "create":
         x = create_commnad()
-        save = input("> Do you want to save the task?: ")
+        save = input("> Do you want to save the task?: ") # <- This go to create commnad
+        print("----------------------")
         if save.lower() == "yes":
-            print("> Task saved susesfully")
+            print("> Task saved")
+            print("----------------------")
             tasks.append(x)
             count += 1
-        if options.lower() == "no":
+        if save.lower() == "no":
             navigation()
-        else: print("Help in progress")    # This is the error 
+        else: print("Help in progress")
     if options.lower() == "update":
-        update_command()                 
+        update_command()
     if options.lower() == "delete":
         delete_command()
-        
+    if options.lower() == "exit":
+        return options
     else: help_command()
-    
-        
+
+def list_command():
+    for task in tasks:
+        print(f'> {task["id"]}: {task["name"]}')
+        print("----------------------")
+
 def view_command():
     view_task = int(input("> Choose a task: "))
     print("----------------------")
@@ -51,17 +52,19 @@ def view_command():
             print("> Task",task["id"])
             print(f'- Nombre: {task["name"]}\n- Description: {task["description"]}\n- Date: {task["date"]}\n- Assignee: {task["assignee"]}')
             print("----------------------")
-        
+
 def create_commnad():
     create = {"id" : count,"name" : input("> Name of the task: "), "description": input("> description: "), "date" :input("> Date: "), "assignee": input("> Assignee: ")}
-    print("----------------------")
+    print("----------------------") #Translate the confirmacion here
     return create
 
 def update_command():
-    update_task = int(input("> Choose a task: "))
     for task in tasks:
+        print(f'> {task["id"]}: {task["name"]}')
+        update_task = int(input("> Choose a task: "))
         if task["id"] == update_task:
             print("> Task",task["id"])
+            print("----------------------")
             print(f'- Nombre: {task["name"]}\n- Description: {task["description"]}\n- Date: {task["date"]}\n- Assignee: {task["assignee"]}')
             print("----------------------")
             print("> What do you want to update? ")
@@ -70,36 +73,57 @@ def update_command():
             options = input("> Choose an option: ")
             print("----------------------")
             if options.lower() == "name":
-                update = input("New name: ")
+                update = input("> New name: ")
                 print("----------------------")
-                task["name"] = update
+                save = input ("> Are you sure?: ")
+                if save.lower() == "yes":
+                    task["name"] = update
+                if save.lower() == "no":
+                    navigation()
             if options.lower() == "description":
-                update = input("New description: ")
+                update = input("> New description: ")
                 print("----------------------")
-                task["description"] = update
+                save = input (">Are you sure?: ")
+                if save.lower() == "yes":
+                    task["description"] = update
+                if save.lower() == "no":
+                    navigation()
             if options.lower() == "date":
-                update = input("New date: ")
+                update = input("> New date: ")
                 print("----------------------")
-                task["date"] = update
+                save = input (">Are you sure?: ")
+                if save.lower() == "yes":
+                    task["date"] = update
+                if save.lower() == "no":
+                    navigation()
             if options.lower() == "assignee":
-                update = input("New assignee: ")
+                update = input("> New assignee: ")
                 print("----------------------")
-                task["assignee"] = update
-            
+                save = input ("> Are you sure?: ")
+                if save.lower() == "yes":
+                    task["assignee"] = update
+                if save.lower() == "no":
+                    navigation()
             else: help_command()
 
 
 def delete_command():
-    delete_task = int(input("> Choose a task: "))
     for task in tasks:
+        print(f'> {task["id"]}: {task["name"]}')
+        print("----------------------")
+        delete_task = int(input("> Choose a task: "))
+        print("----------------------")
         if task["id"] == delete_task:
-            tasks.remove(task)
-            
-                       
-            
+            save = input("Are you sure you want to delete the task?: ")
+            if save.lower() == "yes":
+                tasks.remove(task)
+            if save.lower() == "no":
+                navigation()
 
-welcome()       
+welcome()
 help_command()
+
 while True:
-    navigation()
-    
+    z = navigation()
+    if z == "exit":
+        break
