@@ -2,13 +2,13 @@ import json
 
 def load_tasks():
     with open("tasks.json") as f:
-        return json.loads(f.read()) ["tasks"] 
+        return list(json.loads(f.read()) ["tasks"])
 
 def load_count():
     with open("tasks.json") as f:
         return json.loads(f.read())["count"]
 
-tasks = list(load_tasks())
+tasks = load_tasks()
 count = load_count()
 
 
