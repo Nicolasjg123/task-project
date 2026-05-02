@@ -2,22 +2,22 @@ import json
 
 def load_tasks():
     with open("tasks.json") as f:
-        return json.loads(f.read())
+        return json.loads(f.read()) ["tasks"] 
 
 def load_count():
-    with open("admin.json") as f:
+    with open("tasks.json") as f:
         return json.loads(f.read())["count"]
 
-tasks = load_tasks()
+tasks = list(load_tasks())
 count = load_count()
+
 
 
 
 def save():
     with open("tasks.json", "w") as f:
-        f.write(json.dumps(tasks))
-    with open("admin.json", "w") as f:
-        f.write(json.dumps({"count": count}))
+        f.write(json.dumps({"tasks": tasks, "count": count}))
+
 
 def welcome():
     print("///////Welcome////////")
@@ -68,6 +68,7 @@ def create_commnad():
     print("----------------------") 
     confirm = input("> Do you want to save the task?: ") 
     print("----------------------")
+    print(type(tasks))
     if confirm.lower() == "yes":
         print("> Task saved")
         print("----------------------")

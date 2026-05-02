@@ -41,5 +41,5 @@
   - Displaying full task details before deletion  
   - Asking for confirmation  
 
-- [ ] Persistence  
+- [x] Persistence  
   The app should persist tasks  
