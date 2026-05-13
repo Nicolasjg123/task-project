@@ -1,4 +1,4 @@
-from infrastructure import json_db
+from infrastructure import json_db as db
 
 def execute(id):
-    json_db.delete(id)
+    db.delete(id)

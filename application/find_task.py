@@ -1,4 +1,8 @@
-from infrastructure import json_db
+from infrastructure import json_db as db
 
 def execute(id):
-    return json_db.find(id)
+    task = db.find(id)
+    if task is not None:
+        return task
+    
+    raise ValueError (f"Task with id: '{id}' not found")

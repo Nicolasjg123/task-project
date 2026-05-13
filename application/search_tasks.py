@@ -1,5 +1,5 @@
-from infrastructure import json_db
+from infrastructure import json_db as db
 
 def execute():
-    return json_db.search()
+    return db.search()
     

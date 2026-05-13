@@ -6,11 +6,10 @@ def load_json():
 
 db = load_json()
 tasks = db["tasks"]
-counter = db["counter"]
 
 def overwrite():
     with open("infrastructure/tasks.json", "w") as f:
-        f.write(json.dumps({"tasks":tasks ,"counter":counter}))
+        f.write(json.dumps({"tasks":tasks }))
  
 def save(task):
     existing_task = find(task["id"])
@@ -19,14 +18,16 @@ def save(task):
         existing_task["description"] = task["description"]
         existing_task["date"] = task["date"]
         existing_task["assignee"] = task["assignee"]
-    tasks.append(task)
+        existing_task["status"] = task["status"]
+    else:
+        tasks.append(task)
+    
     overwrite()
 
 def find(id):
     for task in tasks:
         if task["id"] == id:
             return task
-    raise ValueError(f"Task with id: '{id}' not found")
 
 def delete(id):
     for task in tasks:
