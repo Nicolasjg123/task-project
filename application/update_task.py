@@ -1,5 +1,7 @@
 from infrastructure import json_db as db
 
+statuses = ["TODO", "IN_PROGRESS", "DONE"]
+
 def execute(id, name = None,description = None, date = None, assignee = None, status = None):
     task = db.find(id)
     if task is not None:
@@ -12,9 +14,11 @@ def execute(id, name = None,description = None, date = None, assignee = None, st
         if assignee is not None:
             task["assignee"] = assignee
         if status is not None:
-            task["status"] = status
+            if status in statuses:
+                task["status"] = status
+            else:
+                raise ValueError(f"Status '{status}' is invalid")
         return db.save(task)
 
     raise ValueError (f"Task with id: '{id}' not found")
     
- 
